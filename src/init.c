@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 02:51:31 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/14 06:16:12 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/14 10:39:42 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void    init(t_fractol *fractol)
                                             &fractol->img.line_length,
                                             &fractol->img.endian);
     clear_drawing(fractol);
+    draw(fractol);
     mlx_do_key_autorepeatoff(fractol->win.mlx);
     mlx_hook(fractol->win.win, 2, 1L<<0, key_hook, fractol);
     mlx_mouse_hook(fractol->win.win, mouse_hook, fractol);

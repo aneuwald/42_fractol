@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 02:32:29 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/14 06:17:35 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/14 10:38:10 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,16 @@ int	key_hook(int keycode, t_fractol *fractol)
     printf("fractol->config.x: %u\n", fractol->config.x);
     printf("fractol->config.y: %u\n", fractol->config.y);
 	if (keycode == UP)
-        increment(&fractol->config.y, -10);
+        increment(&fractol->config.y, -50);
     else if (keycode == DOWN)
-        increment(&fractol->config.y, 10);
+        increment(&fractol->config.y, 50);
     else if (keycode == LEFT)
-        increment(&fractol->config.x, -10);
+        increment(&fractol->config.x, -50);
     else if (keycode == RIGHT)
-        increment(&fractol->config.x, 10);
+        increment(&fractol->config.x, 50);
     else if (keycode == ESC)
         exit_fractol(&fractol->win);
-    else
-        draw(fractol);
+    draw(fractol);
     
     return (0);
 }

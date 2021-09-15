@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:41:57 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/14 06:14:09 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/15 18:18:07 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,20 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <math.h>
 
 # include "../minilibx-linux/mlx.h"
+# include "mlx.h"
 
-# define UP 65362
-# define DOWN 65364
-# define LEFT 65361
-# define RIGHT 65363
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
 
-# define ESC 65307
+# define PLUS 69
+# define MINUS 78
+
+# define ESC 53
 
 # define MOUSEL 1
 # define MOUSES 2
@@ -44,14 +49,23 @@
 # define SCROLLUP 4
 # define SCROLLDOWN 5
 
-# define WINDOW_SIZE 800
+# define WINDOW_SIZE 100
 
 typedef	struct		s_config
 {
     int             x;
     int             y;
 	int				size;
+	double			h_start;
+	double			v_start;
+	double			vp_size;
+	int			max_iter;
 }					t_config;
+
+typedef struct	    s_complex {
+	double			a;
+	double			b;
+}				    t_complex;
 
 typedef struct	    s_image {
 	void	*img;
@@ -76,10 +90,14 @@ typedef	struct		s_fractol
 
 int		key_hook(int keycode, t_fractol *fractol);
 int		mouse_hook(int button, int x, int y, t_fractol *fractol);
+int		hook_mousemove(int x, int y, t_fractol *fractol);
 void    init(t_fractol *fractol);
-void    draw(t_fractol *fractol);
+void    draw_square(t_fractol *fractol, int x, int y, int size);
 void	draw_circle(t_fractol *fractol, float x, float y, float r);
+void	draw_fractol(t_fractol *fractol);
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	clear_drawing(t_fractol *fractol);
 int		exit_fractol(t_window *win);
+int		mandelbrot(t_fractol *fractol, t_complex c);
 
 #endif

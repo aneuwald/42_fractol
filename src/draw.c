@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 03:05:10 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/14 06:12:41 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/15 17:48:11 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ void draw_circle(t_fractol *fractol, float x, float y, float r)
 	mlx_put_image_to_window(fractol->win.mlx, fractol->win.win, fractol->img.img, 0, 0);
 }
 
-void    draw(t_fractol *fractol)
+void    draw_square(t_fractol *fractol, int x, int y, int size)
 {
     int i;
     int j;
 
-    i = fractol->config.x;
-    while(i < fractol->config.x + 50)
+    i = x;
+    while(i < x + size)
     {
-        j = fractol->config.y;
-        while(j < fractol->config.y + 50)
+        j = y;
+        while(j < y + size)
         {
             my_mlx_pixel_put(&fractol->img, i, j, 0x00FF0000);
             j++;
@@ -79,4 +79,40 @@ void    clear_drawing(t_fractol *fractol)
         i++;
     }
 	mlx_put_image_to_window(fractol->win.mlx, fractol->win.win, fractol->img.img, 0, 0);
+}
+
+int	get_color(int op, int r, int g, int b)
+{
+	return((op << 24) + (r << 16) + (g << 8) + b);
+}
+
+void draw_fractol(t_fractol *fractol)
+{
+	int i;
+	int j;
+	int	iter;
+	int color;
+	t_complex coord;
+
+	i = -1;
+	while (++i < WINDOW_SIZE)
+	{
+		j = -1;
+		while (++j < WINDOW_SIZE)
+		{
+			coord.a = fractol->config.h_start + ((double)i / WINDOW_SIZE) * fractol->config.vp_size;
+			coord.b = fractol->config.v_start + ((double)j / WINDOW_SIZE) * fractol->config.vp_size;
+			iter = mandelbrot(fractol, coord);
+			color = 255 - (iter * 255 / fractol->config.max_iter);
+			color = get_color(0, color, color, color);
+			// color = get_color(0, 255, 0, 0);
+ 			my_mlx_pixel_put(&fractol->img, i, j, color);
+		}
+	}
+	mlx_put_image_to_window(fractol->win.mlx, fractol->win.win, fractol->img.img, 0, 0);
+	printf("h_start: %.30f\n", fractol->config.h_start);
+	printf("v_start: %.30f\n", fractol->config.v_start);
+	printf("vp_size: %.30f\n", fractol->config.vp_size);
+	printf("max_iter: %d\n", fractol->config.max_iter);
+	(void) fractol;
 }

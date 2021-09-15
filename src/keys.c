@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 02:32:29 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/14 10:38:10 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/15 18:17:25 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int		exit_fractol(t_window *win)
 {
-	//if (win)
-		//mlx_destroy_window(win->mlx_ptr, win->win_ptr);
-	(void) win;
+	if (win)
+		mlx_destroy_window(win->mlx, win->win);
     exit(0);
 }
 
@@ -28,21 +27,33 @@ void    increment(int *var, int step)
     *var += step;
 }
 
+int		hook_mousemove(int x, int y, t_fractol *fractol)
+{
+    printf("x: %d\n", x);
+    printf("y: %d\n", y);
+    draw_circle(fractol, x, y, fractol->config.size);
+    (void) fractol;
+	return (0);
+}
+
+
 int	key_hook(int keycode, t_fractol *fractol)
 {
-    printf("fractol->config.x: %u\n", fractol->config.x);
-    printf("fractol->config.y: %u\n", fractol->config.y);
 	if (keycode == UP)
-        increment(&fractol->config.y, -50);
+		fractol->config.v_start -= fractol->config.vp_size * 0.05;
     else if (keycode == DOWN)
-        increment(&fractol->config.y, 50);
+		fractol->config.v_start += fractol->config.vp_size * 0.05;
     else if (keycode == LEFT)
-        increment(&fractol->config.x, -50);
+		fractol->config.h_start -= fractol->config.vp_size * 0.05;
     else if (keycode == RIGHT)
-        increment(&fractol->config.x, 50);
+		fractol->config.h_start += fractol->config.vp_size * 0.05;
+	else if (keycode == PLUS)
+		fractol->config.max_iter += 10;
+    else if (keycode == MINUS && fractol->config.max_iter > 10)
+		fractol->config.max_iter -= 10;	
     else if (keycode == ESC)
         exit_fractol(&fractol->win);
-    draw(fractol);
+    draw_fractol(fractol);
     
     return (0);
 }
@@ -50,15 +61,21 @@ int	key_hook(int keycode, t_fractol *fractol)
 
 int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 {
-    printf("button: %d\n", button);
-    printf("x: %d\n", x);
-    printf("y: %d\n", y);
-    if (button == MOUSEL)
-        clear_drawing(fractol);
-    else if (button == SCROLLUP && fractol->config.size < 50)
-        fractol->config.size++;
-    else if (button == SCROLLDOWN && fractol->config.size > 5)
-        fractol->config.size--;
-    
+	(void) x;
+	(void) y;
+
+    if (button == SCROLLUP)
+	{
+		fractol->config.h_start += fractol->config.vp_size * 0.05;
+		fractol->config.v_start += fractol->config.vp_size * 0.05;
+		fractol->config.vp_size *= 0.9;
+	}
+    else if (button == SCROLLDOWN)
+    {
+		fractol->config.h_start -= fractol->config.vp_size * 0.05;
+		fractol->config.v_start -= fractol->config.vp_size * 0.05;
+		fractol->config.vp_size *= 1.1;
+	}
+	draw_fractol(fractol);
     return (0);
 }

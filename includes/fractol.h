@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:41:57 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/15 18:18:07 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/09/20 17:54:48 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,42 +30,49 @@
 # include <stdio.h>
 # include <math.h>
 
+# include "keymap.h"
 # include "../minilibx-linux/mlx.h"
-# include "mlx.h"
+/*# include "mlx.h"*/
 
-# define UP 126
-# define DOWN 125
-# define LEFT 123
-# define RIGHT 124
+# define MANDELBROT 0
+# define JULIA 1
+# define BURNINGSHIP 2
 
-# define PLUS 69
-# define MINUS 78
-
-# define ESC 53
-
-# define MOUSEL 1
-# define MOUSES 2
-# define MOUSER 3
-# define SCROLLUP 4
-# define SCROLLDOWN 5
-
-# define WINDOW_SIZE 100
-
-typedef	struct		s_config
-{
-    int             x;
-    int             y;
-	int				size;
-	double			h_start;
-	double			v_start;
-	double			vp_size;
-	int			max_iter;
-}					t_config;
+# define WINDOW_SIZE 500
+# define STEP_ITER 10
 
 typedef struct	    s_complex {
 	double			a;
 	double			b;
 }				    t_complex;
+
+typedef struct		s_palette
+{
+	int				count;
+	int				colors[16];
+}					t_palette;
+
+typedef	struct		s_config
+{
+	int				fractal;
+    int             x;
+    int             y;
+	double			h_start;
+	double			v_start;
+	double			vp_size;
+	int				max_iter;
+	int				menu;
+	int				mouse_locked;
+	t_complex		m;
+	int				color;
+	t_palette		*palette;
+}					t_config;
+
+typedef struct	    s_color {
+	int				r;
+	int				g;
+	int				b;
+}				    t_color;
 
 typedef struct	    s_image {
 	void	*img;
@@ -92,12 +99,17 @@ int		key_hook(int keycode, t_fractol *fractol);
 int		mouse_hook(int button, int x, int y, t_fractol *fractol);
 int		hook_mousemove(int x, int y, t_fractol *fractol);
 void    init(t_fractol *fractol);
-void    draw_square(t_fractol *fractol, int x, int y, int size);
+void    draw_square(t_fractol *fractol, int x, int y, int size, int color);
 void	draw_circle(t_fractol *fractol, float x, float y, float r);
 void	draw_fractol(t_fractol *fractol);
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	clear_drawing(t_fractol *fractol);
 int		exit_fractol(t_window *win);
-int		mandelbrot(t_fractol *fractol, t_complex c);
+int		get_fractal(t_fractol *fractol, t_complex c);
+t_complex get_complex(int x, int y, t_fractol *fractol);
+void    draw_menu(t_fractol *fractol);
+char	*ft_itoa(int n);
+t_palette	*get_palettes(void);
+int pick_color(int iter, t_fractol *fractol);
 
 #endif

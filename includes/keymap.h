@@ -10,55 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 01:41:57 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/20 15:36:05 by aneuwald         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ebourdit <ebourdit@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 10:38:41 by ebourdit          #+#    #+#             */
-/*   Updated: 2020/10/10 14:29:22 by ebourdit         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef KEYMAP_H
 # define KEYMAP_H
 
-# define UP 65362
-# define DOWN 65364
-# define LEFT 65361
-# define RIGHT 65363
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
 
-# define W 119
-# define S 115
-# define A 97
-# define D 100
+# define W 13
+# define S 1
+# define A 0
+# define D 2
 
-# define M 109
-# define L 108
-# define C 99
-# define F 102
-# define R 114
-# define P 112
-# define Z 122
+# define M 46
+# define L 37
+# define C 8
+# define F 3
+# define R 15
+# define P 35
+# define Z 6
 
-# define PLUS 65451
-# define MINUS 65453
-# define ESC 65307
-# define SHIFT 65505
+# define PLUS 69
+# define MINUS 78
+# define ESC 53
+# define SHIFT 257
 
 # define MOUSEL 1
 # define SCROLLUP 4

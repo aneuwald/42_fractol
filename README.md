@@ -2,7 +2,7 @@
 
 ## How to create the program?
 
-This version is made for run in `MACOS`. You can comment and uncomment some lines in Makefile and lib.h and it will be runable on linux as well.
+This version is made for running only in `MACOS`. Several changes has to be done to run on Linux.
 You can simply run `make` in order to create the executable `fractol`
 
 ## How to run the program?

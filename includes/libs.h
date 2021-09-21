@@ -17,12 +17,10 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
-/*# include "mlx.h"*/
 
+# include "../mlx/mlx.h"
 # include "keymap.h"
 # include "structs.h"
 # include "functions.h"
-# include "../minilibx-linux/mlx.h"
-
 
 #endif

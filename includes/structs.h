@@ -13,22 +13,22 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct	    s_complex {
+typedef struct s_complex {
 	double			a;
 	double			b;
-}				    t_complex;
+}	t_complex;
 
-typedef struct		s_palette
+typedef struct s_palette
 {
 	int				count;
 	int				colors[16];
-}					t_palette;
+}	t_palette;
 
-typedef	struct		s_config
+typedef struct s_config
 {
 	int				fractal;
-    int             x;
-    int             y;
+	int				x;
+	int				y;
 	double			h_start;
 	double			v_start;
 	double			vp_size;
@@ -42,33 +42,33 @@ typedef	struct		s_config
 	int				shift;
 	int				p;
 	int				miter;
-}					t_config;
+}	t_config;
 
-typedef struct	    s_color {
+typedef struct s_color {
 	int				r;
 	int				g;
 	int				b;
-}				    t_color;
+}	t_color;
 
-typedef struct	    s_image {
+typedef struct s_image {
 	void	*img;
 	char	*addr;
 	int		bpp;
 	int		line_length;
 	int		endian;
-}				    t_image;
+}	t_image;
 
-typedef	struct		s_window
+typedef struct s_window
 {
 	void			*mlx;
 	void			*win;
-}					t_window;
+}	t_window;
 
-typedef	struct		s_fractol
+typedef struct s_fractol
 {
 	t_config		config;
 	t_window		win;
-    t_image			img;
-}					t_fractol;
+	t_image			img;
+}	t_fractol;
 
 #endif

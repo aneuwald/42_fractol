@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static size_t   ft_strlcpy(char *dst, const char *src, size_t size)
+static size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 
@@ -37,9 +37,9 @@ static size_t   ft_strlcpy(char *dst, const char *src, size_t size)
 	return (i);
 }
 
-static int		nbr_digits(int n)
+static int	nbr_digits(int n)
 {
-	int counter;
+	int	counter;
 
 	counter = 0;
 	while (n > 0)
@@ -50,26 +50,28 @@ static int		nbr_digits(int n)
 	return (counter);
 }
 
-static char		*handle_exception(int n)
+static char	*handle_exception(int n)
 {
-	char *str;
+	char	*str;
 
 	if (n == 0)
 	{
-		if (!(str = malloc(2 * sizeof(char))))
+		str = malloc(2 * sizeof(char));
+		if (!str)
 			return (NULL);
 		ft_strlcpy(str, "0", 2);
 	}
 	else
 	{
-		if (!(str = malloc(12 * sizeof(char))))
+		str = malloc(12 * sizeof(char));
+		if (!str)
 			return (NULL);
 		ft_strlcpy(str, "-2147483648", 12);
 	}
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		isneg;
@@ -77,15 +79,15 @@ char			*ft_itoa(int n)
 
 	if (n == 0 || n == -2147483648)
 		return (handle_exception(n));
-	isneg = 0;
-	len = nbr_digits(n >= 0 ? n : -n) + 1;
+	isneg = (n < 0);
+	len = nbr_digits(n) + 1;
 	if (n < 0)
 	{
 		len++;
-		isneg = 1;
 		n = -n;
 	}
-	if (!(str = malloc(len * sizeof(char))))
+	str = malloc(len * sizeof(char));
+	if (!str)
 		return (NULL);
 	str[--len] = '\0';
 	while (n > 0)

@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int		exit_fractol(t_fractol *fractol)
+int	exit_fractol(t_fractol *fractol)
 {
 	if (fractol && fractol->win.win)
 		mlx_destroy_window(fractol->win.mlx, fractol->win.win);
@@ -35,7 +35,12 @@ void	print_guide(void)
 	exit_fractol(0);
 }
 
-void    print(t_fractol *fractol, int x, int y, int color, char *text)
+void	print(t_fractol *fractol, int x, int y, char *text)
 {
-	mlx_string_put(fractol->win.mlx, fractol->win.win, x, y, color, text);
+	mlx_string_put(fractol->win.mlx, fractol->win.win, x, y, 0xFF0000, text);
+}
+
+void	print_green(t_fractol *fractol, int x, int y, char *text)
+{
+	mlx_string_put(fractol->win.mlx, fractol->win.win, x, y, 0x00FF00, text);
 }

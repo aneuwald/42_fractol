@@ -36,12 +36,11 @@ void	check_fractal(t_fractol *fractol, char *name)
 
 int	main(int argc, char **argv)
 {
-	t_fractol fractol;
+	t_fractol	fractol;
 
 	if (argc != 2)
 		print_guide();
 	check_fractal(&fractol, argv[1]);
 	init(&fractol);
-
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void    reset_params(t_fractol *fractol)
+void	reset_params(t_fractol *fractol)
 {
 	fractol->config.x = 0;
 	fractol->config.y = 0;
@@ -21,24 +21,21 @@ void    reset_params(t_fractol *fractol)
 	fractol->config.vp_size = 4;
 	fractol->config.max_iter = DEFAULT_ITER;
 	fractol->config.mouse_locked = 1;
-	fractol->config.m.a = -0.70176;
-	fractol->config.m.b = -0.3842;
+	fractol->config.m.a = DEFAULT_JULIA_RE;
+	fractol->config.m.b = DEFAULT_JULIA_IM;
 	fractol->config.shift = 0;
 	fractol->config.p = 0;
 	fractol->config.miter = 0;
 }
 
-void    change_fractals(t_fractol *fractol)
+void	change_fractals(t_fractol *fractol)
 {
 	reset_params(fractol);
 	fractol->config.fractal = (fractol->config.fractal + 1) % COUNT_FRACTALS;
 }
 
-int	key_hook(int keycode, t_fractol *fractol)
+void	move(t_fractol *fractol, int keycode)
 {
-	const int count_color = fractol->config.palette[fractol->config.color].count;
-
-	// printf("key: %d\n", keycode);
 	if (keycode == UP || keycode == W)
 		fractol->config.v_start -= fractol->config.vp_size * 0.05;
 	else if (keycode == DOWN || keycode == S)
@@ -54,13 +51,21 @@ int	key_hook(int keycode, t_fractol *fractol)
 	}
 	else if (keycode == MINUS && fractol->config.max_iter > STEP_ITER)
 	{
-		fractol->config.max_iter -= STEP_ITER;	
+		fractol->config.max_iter -= STEP_ITER;
 		decrement_shift(fractol);
 	}
-	else if (keycode == M)
+}
+
+int	key_hook(int keycode, t_fractol *fractol)
+{
+	const int	count_color = fractol->config.palette
+			[fractol->config.color].count;
+
+	move(fractol, keycode);
+	if (keycode == M)
 		fractol->config.menu = !fractol->config.menu;
 	else if (keycode == L)
-		fractol->config.mouse_locked = !fractol->config.mouse_locked;   
+		fractol->config.mouse_locked = !fractol->config.mouse_locked;
 	else if (keycode == C)
 		fractol->config.color = (fractol->config.color + 1) % 5;
 	else if (keycode == SHIFT)
@@ -76,6 +81,5 @@ int	key_hook(int keycode, t_fractol *fractol)
 	else if (keycode == ESC)
 		exit_fractol(fractol);
 	draw_fractol(fractol);
-	
 	return (0);
 }

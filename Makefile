@@ -10,31 +10,42 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC		=	src/*.c utils/*.c
-GCC		=	clang
+SRC		=	src/color.c \
+			src/draw.c \
+			src/fractals.c \
+			src/fractals2.c \
+			src/init.c \
+			src/keys.c \
+			src/main.c \
+			src/menu.c \
+			src/mouse.c \
+			src/print.c \
+			src/utils.c \
+			utils/ft_itoa.c \
+			utils/ft_strcmp.c
+GCC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 FSANIT  =	-fsanitize=address -g
 INCLUD	=	-I includes
 NAME	=	fractol
-MLX		=	-L mlx -lmlx -framework OpenGL -framework AppKit -O3
-MLX_LNX	=	-L minilibx-linux -lmlx -lm -lX11 -lXext -O3
+MLX		=	-L mlx -lmlx -lm -framework OpenGL -framework AppKit -O3
+RM		=	rm -rf
+MAKE	= 	make
 
-	
 all : 		$(NAME)
 
-$(NAME) :
-			@ $(GCC) $(CFLAGS) $(FSANIT) -o $(NAME) $(SRC) $(INCLUD) $(MLX_LNX)  
+$(NAME) :	
+			@$(MAKE) -C mlx
+			@$(GCC) $(CFLAGS) $(FSANIT) $(MLX) -o $(NAME) $(INCLUD) $(SRC) 
 
-test	:	re
-			./$(NAME) mandelbrot
+norm	:	
+			norminette src includes utils
+clean:
+			@$(MAKE) -C mlx clean
 
-clean :
-			@ rm -f $(NAME)
+fclean:		clean
+			@$(RM) $(NAME)
 
-bonus :		all
+re:			fclean $(NAME)
 
-fclean :	clean
-
-re :		fclean all
-
-.PHONY: 	all clean fclean re test
+.PHONY: 	all clean fclean re norm

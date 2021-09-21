@@ -5,7 +5,7 @@
 This version is made for run in `MACOS`. You can comment and uncomment some lines in Makefile and lib.h and it will be runable on linux as well.
 You can simply run `make` in order to create the executable `fractol`
 
-## How to run program?
+## How to run the program?
 
 You can run a list of fractals using the sintax `./fractol [name]`
 The program accepts the following commands:
@@ -20,7 +20,7 @@ The program accepts the following commands:
 	./fractol celtic_perpendicular
 	./fractol perpendicular_buffalo
 ```
-Anoher input different of those should print this exact list in the terminal and quit appropriately
+Another input different of those should print this exact list in the terminal and quit appropriately
 
 ![alt text](images/wrong_parameters.png)
 

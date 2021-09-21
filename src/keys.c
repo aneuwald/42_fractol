@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 02:32:29 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 01:44:34 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 02:32:36 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    change_fractals(t_fractol *fractol)
 	fractol->config.max_iter = DEFAULT_ITER;
 	fractol->config.m.a = -0.70176;
 	fractol->config.m.b = -0.3842;
-	fractol->config.fractal = (fractol->config.fractal + 1) % 3;
+	fractol->config.fractal = (fractol->config.fractal + 1) % COUNT_FRACTALS;
 }
 
 void    reset_params(t_fractol *fractol)

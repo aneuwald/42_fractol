@@ -6,7 +6,7 @@
 #    By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/19 19:18:55 by acanterg          #+#    #+#              #
-#    Updated: 2021/09/21 02:02:22 by aneuwald         ###   ########.fr        #
+#    Updated: 2021/09/21 02:37:04 by aneuwald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ all : 		$(NAME)
 
 $(NAME) :
 			@ $(GCC) $(CFLAGS) $(FSANIT) -o $(NAME) $(SRC) $(INCLUD) $(MLX_LNX)  
+
+test	:	re
+			./$(NAME) perpendicular_burningship
 
 clean :
 			@ rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 20:37:15 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 01:45:03 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 02:54:16 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ void	draw_background(t_fractol *fractol)
 	mlx_put_image_to_window(fractol->win.mlx, fractol->win.win, fractol->img.img, 0, 0);
 }
 
-void    print(t_fractol *fractol, int x, int y, int color, char *text)
-{
-	mlx_string_put(fractol->win.mlx, fractol->win.win, x, y, color, text);
-}
-
 void    draw_instructions(t_fractol *fractol)
 {
 	print(fractol, 10, 15, 0xff0000, "M: MENU");
@@ -59,6 +54,16 @@ void    draw_set_name(t_fractol *fractol)
 		print(fractol, WINDOW_SIZE - 51, WINDOW_SIZE - 10, 0xff0000, "JULIA");
 	else if (fractol->config.fractal == BURNINGSHIP)
 		print(fractol, WINDOW_SIZE - 86, WINDOW_SIZE - 10, 0xff0000, "BURNINGSHIP");
+	else if (fractol->config.fractal == PERPENDICULAR_BURNINGSHIP)
+		print(fractol, WINDOW_SIZE - 170, WINDOW_SIZE - 10, 0xff0000, "PERPENDICULAR BURNINGSHIP");
+	else if (fractol->config.fractal == MANDELBAR)
+		print(fractol, WINDOW_SIZE - 74, WINDOW_SIZE - 10, 0xff0000, "MANDELBAR");
+	else if (fractol->config.fractal == CELTIC_MANDELBAR)
+		print(fractol, WINDOW_SIZE - 116, WINDOW_SIZE - 10, 0xff0000, "CELTIC MANDELBAR");
+	else if (fractol->config.fractal == CELTIC_PERPENDICULAR)
+		print(fractol, WINDOW_SIZE - 140, WINDOW_SIZE - 10, 0xff0000, "CELTIC PERPENDICULAR");
+	else if (fractol->config.fractal == PERPENDICULAR_BUFFALO)
+		print(fractol, WINDOW_SIZE - 146, WINDOW_SIZE - 10, 0xff0000, "PERPENDICULAR BUFFALO");
 }
 
 void    draw_menu(t_fractol *fractol)

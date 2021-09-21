@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 02:51:31 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 02:00:02 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 02:59:06 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    set_default_parameters(t_fractol *fractol)
 	fractol->config.mouse_locked = 1;
 	fractol->config.m.a = -0.70176;
 	fractol->config.m.b = -0.3842;
-	fractol->config.menu = 0;
+	fractol->config.menu = 1;
 	fractol->config.color = 0;
 	fractol->config.palette = get_palettes();
 }
@@ -31,7 +31,7 @@ void    set_default_parameters(t_fractol *fractol)
 void	set_image(t_fractol *fractol)
 {
 	fractol->win.mlx = mlx_init();
-	fractol->win.win = mlx_new_window(fractol->win.mlx, WINDOW_SIZE, WINDOW_SIZE, "Hello world!");
+	fractol->win.win = mlx_new_window(fractol->win.mlx,WINDOW_SIZE, WINDOW_SIZE, "Fract-ol project!");
 	fractol->img.img = mlx_new_image(fractol->win.mlx, WINDOW_SIZE, WINDOW_SIZE);
 	fractol->img.addr = mlx_get_data_addr(fractol->img.img,
 											&fractol->img.bpp,

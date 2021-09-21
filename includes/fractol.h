@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:41:57 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 02:50:13 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:08:18 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 # define COUNT_FRACTALS 8
 
 # define WINDOW_SIZE 600
-# define STEP_ITER 1
+# define STEP_ITER 5
 # define DEFAULT_ITER 20
 
-# define MENU_WIDTH 115
-# define MENU_HEIGHT 130
+# define MENU_WIDTH 125
+# define MENU_HEIGHT 187
 
 
 

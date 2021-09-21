@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 17:52:50 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 01:44:45 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 08:55:01 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,24 @@ int interpolate_color(int color1, int color2, double fract)
 int pick_color(int iter, t_fractol *fractol)
 {
 	const t_palette p = fractol->config.palette[fractol->config.color];
-	const double colors_count = (double)p.count;
-	const double ratio = (fractol->config.max_iter + 1) / (colors_count - 1);
+	const double ratio = (fractol->config.max_iter + 1) / ((double)p.count - 1);
 	const double fract = (iter / ratio) - floor(iter / ratio);
 
-	if (iter == 0 || iter == fractol->config.max_iter)
+	if (fractol->config.p)
+		return (interpolate_color(p.colors[((int)floor(iter / ratio) + fractol->config.shift - 1) % (p.count)],
+					p.colors[((int)floor(iter / ratio) + fractol->config.shift) % (p.count)],
+					fract));
+	if (iter == fractol->config.max_iter)
 		return (get_color(0, 0, 0, 0));
-		
-	return (interpolate_color(p.colors[(int)floor(iter / ratio)],
-						p.colors[(int)floor(iter / ratio)],
+
+	return (interpolate_color(p.colors[(int)floor(iter / ratio) ],
+						p.colors[(int)floor(iter / ratio) + 1],
 						fract));
 }
 
 t_palette	*get_palettes(void)
 {
-	static t_palette	array[5];
+	static t_palette	array[6];
 
 	array[0] =
 		(t_palette){16,{0x000000, 0x040110, 0x09012f, 0x040449,
@@ -72,5 +75,8 @@ t_palette	*get_palettes(void)
 	array[4] =
 		(t_palette){7, {0xFF0000, 0xFFFF00, 0x00FF00, 0x00FFFF,
 			0x0000FF, 0xFF00FF, 0xFF0000}};
+	array[5] =
+		(t_palette){8, {0x000000, 0x50050E, 0x7C091F, 0x890100,
+			0xA20004, 0xb30e02, 0xC31B00, 0xDD0000}};
 	return (array);
 }

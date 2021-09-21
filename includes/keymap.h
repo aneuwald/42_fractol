@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:38:55 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/20 16:17:42 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 08:07:49 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,25 @@
 # define LEFT 65361
 # define RIGHT 65363
 
-# define M 109
-# define L 108
-# define C 99
-# define F 102
-# define R 114
-
 # define W 119
 # define S 115
 # define A 97
 # define D 100
 
+# define M 109
+# define L 108
+# define C 99
+# define F 102
+# define R 114
+# define P 112
+# define Z 122
+
 # define PLUS 65451
 # define MINUS 65453
-
 # define ESC 65307
+# define SHIFT 65505
 
 # define MOUSEL 1
-# define MOUSES 2
-# define MOUSER 3
 # define SCROLLUP 4
 # define SCROLLDOWN 5
 

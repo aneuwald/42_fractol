@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:41:57 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/20 23:54:03 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 08:12:10 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ typedef	struct		s_config
 	t_complex		default_m;
 	int				color;
 	t_palette		*palette;
+	int				shift;
+	int				p;
+	int				miter;
 }					t_config;
 
 typedef struct	    s_color {

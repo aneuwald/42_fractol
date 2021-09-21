@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:41:57 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 02:54:30 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 07:56:40 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void		init(t_fractol *fractol);
 int         exit_fractol(t_fractol *fractol);
 int			get_fractal(t_fractol *fractol, t_complex c);
 int			get_fractal2(t_fractol *fractol, t_complex c);
-t_complex   get_complex(int x, int y, t_fractol *fractol);
 
 /* UTILS */ 
+t_complex   get_complex(int x, int y, t_fractol *fractol);
+void		increment_shift(t_fractol *fractol);
+void		decrement_shift(t_fractol *fractol);
 char		*ft_itoa(int n);
 int			ft_strcmp(char *s1, char *s2);
 

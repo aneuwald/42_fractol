@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 01:59:33 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 02:55:01 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 08:30:04 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		exit_fractol(t_fractol *fractol)
 
 void	print_guide(void)
 {
-	printf("\n\033[0;31m### WRONG ARGUMENTS ###\n");
-	printf("\033[0mPlease, use one of the following options:\n\n");
+	printf("\n\033[0;31m### 😥 WRONG ARGUMENTS 😥 ###\n");
+	printf("\033[0mDon't worry! Please, use one of the following commands:\n\n");
 	printf("\t\033[0;32m./fractol mandelbrot\n");
 	printf("\t./fractol julia\n");
 	printf("\t./fractol burningship\n");
@@ -30,7 +30,8 @@ void	print_guide(void)
 	printf("\t./fractol mandelbar\n");
 	printf("\t./fractol celtic_mandelbar\n");
 	printf("\t./fractol celtic_perpendicular\n");
-	printf("\t./fractol perpendicular_buffalo\033[0m\n\n");
+	printf("\t./fractol perpendicular_buffalo\n\n");
+	printf("\t\033[0;33mTap 'M' to check some cool effects! 😉 \033[0m\n\n");
 	exit_fractol(0);
 }
 

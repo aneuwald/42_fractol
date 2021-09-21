@@ -6,7 +6,7 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 01:41:57 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 01:39:27 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 02:00:19 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void        draw_menu(t_fractol *fractol);
 int			pick_color(int iter, t_fractol *fractol);
 t_palette	*get_palettes(void);
+void		print_guide(void);
 
 /* PROGRAM */
 void		init(t_fractol *fractol);

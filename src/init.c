@@ -6,18 +6,11 @@
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 02:51:31 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 01:44:38 by aneuwald         ###   ########.fr       */
+/*   Updated: 2021/09/21 02:00:02 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int		exit_fractol(t_fractol *fractol)
-{
-	if (fractol->win.win)
-		mlx_destroy_window(fractol->win.mlx, fractol->win.win);
-	exit(0);
-}
 
 void    set_default_parameters(t_fractol *fractol)
 {

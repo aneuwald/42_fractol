@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   libs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/14 01:41:57 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/09/21 01:34:33 by aneuwald         ###   ########.fr       */
+/*   Created: 2021/09/20 23:52:09 by aneuwald          #+#    #+#             */
+/*   Updated: 2021/09/20 23:59:02 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef LIBS_H
+# define LIBS_H
 
-# include "libs.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <math.h>
 
-# define MANDELBROT 0
-# define JULIA 1
-# define BURNINGSHIP 2
-
-# define WINDOW_SIZE 600
-# define STEP_ITER 1
-# define DEFAULT_ITER 20
-
-# define MENU_WIDTH 115
-# define MENU_HEIGHT 130
-
-
+# include "keymap.h"
+# include "structs.h"
+# include "functions.h"
+# include "../minilibx-linux/mlx.h"
+/*# include "mlx.h"*/
 
 
 #endif

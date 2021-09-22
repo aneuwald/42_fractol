@@ -38,7 +38,7 @@ void	draw_background(t_fractol *fractol)
 void	print_on_of(t_fractol *fractol, int x, int y, int param)
 {
 	if (param)
-		print_green(fractol, x, y, "(OFF)");
+		print_green(fractol, x, y, "(ON)");
 	else
 		print(fractol, x, y, "(OFF)");
 }
